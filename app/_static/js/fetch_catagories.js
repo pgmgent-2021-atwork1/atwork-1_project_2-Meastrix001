@@ -1,4 +1,3 @@
-const GET_EVENT_API = 'https://www.pgm.gent/data/gentsefeesten/categories.json'
 
 
 

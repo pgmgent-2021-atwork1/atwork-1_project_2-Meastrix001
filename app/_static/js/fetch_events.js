@@ -1,5 +1,28 @@
-const GET_EVENT_API = 'https://www.pgm.gent/data/gentsefeesten/events.json'
+function getEventJSON(url, succesHandler, errorHandler) {
 
+  //make a server request
+  const xhr = new XMLHttpRequest();
+  //return XMLHttpRequest as json file
+  xhr.responseType = ('json');
+  //open XMLhttpRequest 1 Method = string, 2 url= string 3 async/sync
+  xhr.open('GET', url, true);
+  // when the xhr.open synchronous flag = true. 'Do this on Load'
+  xhr.onload = () => {
+    //check status of xhr status if its all loaded or not
+    if (xhr.status === 200) {
+      //in case xhr.response != JSON make it JSON else skip to 'xhr.response'
+      const data = (!xhr.responseType) ? JSON.parse(xhr.response) : xhr.response;
+      succesHandle && succesHandler(data);
+    } else {
+      errorHandler && errorHandler('netwerk ERROR');
+    };
+    xhr.send(null);
+  }
+
+
+
+  
+}
 
 
 
