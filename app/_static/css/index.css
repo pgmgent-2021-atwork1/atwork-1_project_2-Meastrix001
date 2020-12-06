@@ -1,0 +1,282 @@
+.discoverGF{
+  width: 12rem;
+  padding-top: 1rem;
+}
+.discover_GF-large{
+  margin-top: 5px;
+}
+.discover_GF-small{
+  width:80px; 
+  height:26px;
+}
+.header_events {
+  margin-bottom: 6rem;
+  width: 90%;
+  margin: auto;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+.header_event-block{
+  width: fit-content;
+  position: relative;
+  width: 90%; 
+  margin-bottom: 1.4rem;
+  cursor: pointer;
+}
+.header_event-block img {
+  width: 100%;
+  max-width: 20rem;
+  height: 50%;
+  max-height: 10rem;
+  padding-bottom: 1rem;
+}
+.header_event-block img:hover {
+  width: 101%;
+  max-height: 11rem;
+  transition: 0.1s;
+}
+.event-items li{
+  list-style: none;
+}
+.event-items h3{
+  width: 100%;
+  padding-bottom: 0.8rem;
+}
+.event-img{
+ position: relative;
+  width: 100%;
+  height: 11rem;
+  z-index: -1;
+}
+.event-details{
+  margin-top: -1rem;
+  margin-left: 2rem;
+  
+}
+.event-time{
+  background-color: black;
+  width: fit-content;
+  height: fit-content;
+  padding: 0.6rem;
+  margin-bottom: 1.2rem;
+}
+.event-time h3{
+    color: white;
+}
+.event-time h3,
+.event-items h3,
+.event-items h4{
+    margin-block-end: 0;
+  margin-block-start: 0;
+  margin-inline-end: 0;
+  margin-inline-start: 0;
+}
+@media (min-width: 550px) {
+  .header_events
+  {
+    display: flex;
+    flex-wrap: wrap;
+   
+  }
+  .header_event-block{
+    width: 20rem;
+    padding: 1rem;
+
+  }
+}
+.news-arrow{
+  transform: rotate(180deg);
+}
+
+.news{
+  margin: auto;
+  width: fit-content;
+  width: 90%; 
+  margin-bottom: 1.4rem;
+  cursor: pointer;
+}
+.news-article{
+  width: 100%;
+  max-width: 50rem;
+  margin-bottom: 2rem;
+}
+.news-img_1{
+  background: url(../media/news-1.jpg);
+}
+.news-img_2{
+  background: url(../media/news-2.jpg);
+}
+.news-img_3{
+  background: url(../media/news-3.jpg);
+}
+.news-img {
+  position: relative;
+  background-position: center center;
+  background-size: cover;
+  width: 100%;
+  height: 15rem;
+}
+.news-article:hover h2{
+  text-decoration: underline solid black;
+}
+.news-date{
+  position: absolute;
+  bottom: 0;
+  background-color: white;
+  padding: 0.1rem 1rem;
+}
+.news-article_content{
+  width: fit-content;
+  padding: 0.2rem 2rem;
+  border: 2px solid black;
+  margin-left: 1rem;
+  margin-bottom: 3rem;
+}
+.news-article_content:hover
+{
+  background-color: black;
+  transition: 0.2s;
+}
+.news-article_content:hover a {
+   color: white; 
+   transition: 0.2s;
+}
+.news-article_content a {
+   color: black;
+  text-decoration: none;
+}
+@media (min-width:900px){
+  .news-article{
+    display: flex;
+    width: 100%;
+    max-width: unset;
+  }
+  .news-img{
+    width: 50%;
+    height: 25rem;
+    margin-right: 1rem;
+  }
+  .news-wrap{
+    width: 50%;
+  }
+}
+.carousel-img_show{
+  position: relative;
+  background-position: center center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+.carousel-images{
+  position: relative;
+  background-position: center center;
+  background-size: cover;
+  width: 100%;
+  height: 20rem;
+}
+.carousel-img_amount {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  padding: 0.5rem 2rem;
+}
+.carousel{
+  position: relative;
+}
+.carousel-controls{
+  position: absolute;
+  bottom: 0.3rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+#img-forward{
+  margin-left: 1.9rem;
+  background-color: none;
+  cursor: pointer;
+}
+#img-back{
+  margin-right: 1.9rem;
+  background-color: none;
+  cursor: pointer;
+}
+@media (min-width:900px) {
+  .carousel{
+    height: 100%;
+    max-height: 35rem;
+  }
+  .carousel-images{
+    height: 35rem;
+   
+  }
+}
+.twitter-carousel_banner{
+  background-position: center center;
+  background-size: cover;
+  width: 100%;
+  height: 13rem;
+  margin-top: 4rem;
+}
+.twitter-carousel_content{
+  margin-bottom: 5rem;
+}
+.twitter-bird{
+  width: 3.1rem;
+  height: 3rem;
+  margin-left: -0.2rem;
+  margin-bottom: 0.3rem;
+}
+#twitter-beleef{
+  width: 11rem;
+  margin-left: 0.5rem;
+  margin-bottom: 0.4rem;
+  fill: white;
+}
+.twitter-dots{
+  width: fit-content;
+  margin: auto;
+}
+.twitter-dots button{
+  height: 1rem;
+  width: 1rem;
+  border-radius: 50%;
+  margin-left: 0.8rem;
+  border: none;
+}
+.staynotified h2{
+  font-size: 2rem;
+}
+.staynotified p {
+  line-height: 1.5rem;
+  font-size: 1.2rem;
+}
+.staynotified-inputs{
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 522px) {
+
+  .staynotified-inputs {
+    flex-direction: row;
+  }
+}
+.staynotified input:first-child{
+  background-color: lightgray;
+  padding: 0.7rem 0.9rem 0.7rem 0.9rem;
+  border: none;
+width: 90%;
+} 
+.staynotified input:nth-child(2) {
+background-color: black;
+padding: 0.6rem 0.8rem 0.6rem 0.8rem;
+border: 0.2rem solid black;
+width: 6rem;
+color: white;
+}
+.staynotified input:nth-child(2):hover {
+  transition: 0.3s;
+  background-color: white;
+  cursor: pointer;
+  color: black;
+}
