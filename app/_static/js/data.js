@@ -43,3 +43,54 @@ images = [
   '_static/media/home-image-carousel/image-9.jpg',
   '_static/media/home-image-carousel/image-10.jpg'
 ]
+navBarSearchByDays = [{
+  day: '19',
+  month: 'Jul',
+  dayInStr: 'Ma',
+  dayInStrFull: 'Maandag'
+}, {
+  day: '20',
+  month: 'jul',
+  dayInStr: 'Di',
+  dayInStrFull: 'Dinsdag'
+}, {
+  day: '21',
+  month: 'jul',
+  dayInStr: 'Wo',
+  dayInStrFull: 'Woensdag'
+}, {
+  day: '22',
+  month: 'jul',
+  dayInStr: 'Do',
+  dayInStrFull: 'Donderdag'
+}, {
+  day: '23',
+  month: 'jul',
+  dayInStr: 'Vr',
+  dayInStrFull: 'vrijdag'
+}, {
+  day: '24',
+  month: 'jul',
+  dayInStr: 'Za',
+  dayInStrFull: 'Zaterdag'
+}, {
+  day: '25',
+  month: 'jul',
+  dayInStr: 'Zo',
+  dayInStrFull: 'Zondag'
+}, {
+  day: '26',
+  month: 'jul',
+  dayInStr: 'Ma',
+  dayInStrFull: 'Maandag'
+}, {
+  day: '27',
+  month: 'jul',
+  dayInStr: 'Di',
+  dayInStrFull: 'Dinsdag'
+}, {
+  day: '28',
+  month: 'jul',
+  dayInStr: 'Wo',
+  dayInStrFull: 'woensdag'
+}]

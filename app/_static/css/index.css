@@ -13,15 +13,14 @@
   margin-bottom: 6rem;
   width: 90%;
   margin: auto;
-  padding-top: 6rem;
+  padding-top: 3rem;
   padding-bottom: 6rem;
 }
 .header_event-block{
-  width: fit-content;
   position: relative;
-  width: 90%; 
   margin-bottom: 1.4rem;
   cursor: pointer;
+  transition: 0.3s;
 }
 .header_event-block img {
   width: 100%;
@@ -47,6 +46,7 @@
   width: 100%;
   height: 11rem;
   z-index: -1;
+  transition: 0.3s;
 }
 .event-details{
   margin-top: -1rem;
@@ -71,7 +71,7 @@
   margin-inline-end: 0;
   margin-inline-start: 0;
 }
-@media (min-width: 550px) {
+@media (min-width: 798px) {
   .header_events
   {
     display: flex;
@@ -81,7 +81,18 @@
   .header_event-block{
     width: 20rem;
     padding: 1rem;
-
+    margin: auto;
+    height: 25rem;
+  }
+}
+@media (min-width: 1500px) {
+  .header_event-block{
+    width: 31rem;
+    transition: 0.3s;
+  }
+  .event-img {
+    height: 17rem;
+    transition: 0.3s;
   }
 }
 .news-arrow{
@@ -115,6 +126,7 @@
   background-size: cover;
   width: 100%;
   height: 15rem;
+ transition: 0.2s;
 }
 .news-article:hover h2{
   text-decoration: underline solid black;
@@ -123,16 +135,18 @@
   position: absolute;
   bottom: 0;
   background-color: white;
-  padding: 0.1rem 1rem;
+  padding: 0.1rem 2rem;
 }
 .news-article_content{
   width: fit-content;
-  padding: 0.2rem 2rem;
-  border: 2px solid black;
-  margin-left: 1rem;
+
   margin-bottom: 3rem;
 }
-.news-article_content:hover
+.news-article_content p{
+    padding: 0.2rem 2rem;
+      border: 2px solid black;
+}
+.news-article_content p:hover
 {
   background-color: black;
   transition: 0.2s;
@@ -145,6 +159,13 @@
    color: black;
   text-decoration: none;
 }
+@media (min-width:400px) {
+  .news-date {
+  transform: translateY(50%) rotate(-90deg);
+  bottom: 50%;
+  left: -2rem;
+  }
+}
 @media (min-width:900px){
   .news-article{
     display: flex;
@@ -153,12 +174,19 @@
   }
   .news-img{
     width: 50%;
-    height: 25rem;
-    margin-right: 1rem;
+    height: 15rem;
+    margin-right: 2rem;
+      transition: 0.2s;
   }
   .news-wrap{
     width: 50%;
   }
+}
+@media (min-width: 1500px) {
+.news-img  {
+  height: 25rem;
+  transition: 0.2s;
+}
 }
 .carousel-img_show{
   position: relative;
@@ -211,12 +239,16 @@
    
   }
 }
+.twitter-carousel {
+    margin-top: 4rem;
+}
 .twitter-carousel_banner{
+  background: url(../media/twitter-carousel.jpg);
   background-position: center center;
   background-size: cover;
   width: 100%;
-  height: 13rem;
-  margin-top: 4rem;
+  height: 20rem;
+
 }
 .twitter-carousel_content{
   margin-bottom: 5rem;
@@ -244,6 +276,36 @@
   margin-left: 0.8rem;
   border: none;
 }
+.twitter-follow{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 30rem;
+}
+@media (min-width:1000px) {
+  .twitter-carousel {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    width: 100%;
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+    transition: 0.2s;
+  }
+  .twitter-carousel_banner {
+    width: 49%;
+    height: 30rem;
+    
+  }
+  .twitter-carousel_content{
+    margin-bottom: 0;
+    width: 49%;
+  }
+}
+.staynotified {
+  margin: auto;
+  margin-bottom: 4rem;
+}
 .staynotified h2{
   font-size: 2rem;
 }
@@ -254,12 +316,6 @@
 .staynotified-inputs{
   display: flex;
   flex-direction: column;
-}
-@media (min-width: 522px) {
-
-  .staynotified-inputs {
-    flex-direction: row;
-  }
 }
 .staynotified input:first-child{
   background-color: lightgray;
@@ -279,4 +335,15 @@ color: white;
   background-color: white;
   cursor: pointer;
   color: black;
+}
+@media (min-width: 522px) {
+
+  .staynotified-inputs {
+    flex-direction: row;
+  }
+}
+@media (min-width: 920px) {
+  .staynotified-inputs {
+    height: 4rem;
+  }
 }
