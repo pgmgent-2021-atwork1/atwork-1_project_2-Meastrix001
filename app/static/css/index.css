@@ -1,6 +1,5 @@
 .discoverGF{
   width: 12rem;
-  padding-top: 1rem;
 }
 .discover_GF-large{
   margin-top: 5px;
@@ -110,20 +109,10 @@
   width: 100%;
   max-width: 50rem;
   margin-bottom: 2rem;
-}
-.news-img_1{
-  background: url(../media/news-1.jpg);
-}
-.news-img_2{
-  background: url(../media/news-2.jpg);
-}
-.news-img_3{
-  background: url(../media/news-3.jpg);
+
 }
 .news-img {
   position: relative;
-  background-position: center center;
-  background-size: cover;
   width: 100%;
   height: 15rem;
  transition: 0.2s;
@@ -139,8 +128,8 @@
 }
 .news-article_content{
   width: fit-content;
-
-  margin-bottom: 3rem;
+  margin: auto;
+  margin-bottom: 3rem;  
 }
 .news-article_content p{
     padding: 0.2rem 2rem;
@@ -212,6 +201,7 @@
 }
 .carousel{
   position: relative;
+  margin: auto;
 }
 .carousel-controls{
   position: absolute;
@@ -236,7 +226,15 @@
   }
   .carousel-images{
     height: 35rem;
-   
+  }
+}
+@media (min-width: 1900px) {
+  .carousel{
+    height: 100%;
+    max-height: 50rem;
+  }
+  .carousel-images{
+    height: 50rem;
   }
 }
 .twitter-carousel {
@@ -291,6 +289,7 @@
     padding-top: 4rem;
     padding-bottom: 3rem;
     transition: 0.2s;
+    box-sizing: border-box;
   }
   .twitter-carousel_banner {
     width: 49%;
@@ -321,7 +320,7 @@
   background-color: lightgray;
   padding: 0.7rem 0.9rem 0.7rem 0.9rem;
   border: none;
-width: 90%;
+width: 100%;
 } 
 .staynotified input:nth-child(2) {
 background-color: black;

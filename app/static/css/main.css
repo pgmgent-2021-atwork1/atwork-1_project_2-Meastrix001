@@ -42,16 +42,12 @@ p , h4{
   background-color: black;
 }
 .wrapper {
-  padding-left: 5%;
-  padding-right: 5%;
+  padding-left: 2rem;
+  padding-right: 2rem;
   max-width: 100rem;
-  margin: auto;
 }
 ul{
   margin-block-start: 0;
-}
-.easeTrans {
-  transition: 0.3s;
 }
 /* navbar */
 .nav_list,
@@ -218,14 +214,15 @@ width: 20%;
 height: auto;
 text-align: center;
 background-color: black;
-color: white;
-padding: 0.4rem;
+
+padding: 1.4rem;
 box-sizing: border-box;
 }
 .event_day p{
   margin-top: 0;
   margin-bottom: 0;
   transition: 0.2s;
+  color: white;
 }
 .event_day:hover p {
   color: black;
@@ -289,7 +286,7 @@ cursor: pointer;
 @media (min-width: 1080px) {
   .discoverGF{
     position: absolute;
-    top: 19%;
+    top: 14rem;
     right: 6rem;
     transform: translateX(50%);
     padding: 0;
@@ -297,9 +294,9 @@ cursor: pointer;
   .discover_GF-small{
     transform:rotate(-90deg)  ;
     position: absolute;
-    left: 0;
+    left: -3.5rem;
   }
-  GF-L_color{
+  #GF20 path{
     fill: white;
   }
 }
@@ -325,12 +322,10 @@ cursor: pointer;
   }
 }
 .GF_logo-bottom {
-  position: absolute;
-  right: 75%;
-  transform: translateX(50%);
   background-color: white;
   padding: 1rem 1rem 1rem 1rem;
-  width: 6rem;
+  width: 30%;
+  max-width: 20rem;
 }
 /* footer */
 .footer-bottom{
@@ -346,6 +341,7 @@ cursor: pointer;
 .footer-block {
   position: relative;
   height: 100%;
+  margin: auto;
 }
 .footer-block p {
   color: white;
@@ -356,11 +352,10 @@ cursor: pointer;
   width: 100%;
   position: absolute;
   background-color: black;
-  padding-left: 5%;
-  padding-right: 5%;
   height: 10rem;
   bottom: 0;
-  margin: auto;
+  left: 0;
+  box-sizing: border-box;
 }
 .footer-block_content p {
   color: white;
@@ -379,6 +374,9 @@ cursor: pointer;
   transition: 0.2s;
  fill:black;
 }
+.footer-bottom-follow a:hover path{
+  fill: white;
+}
 @media(min-width: 750px) {
   .footer-block_content {
     background-color: unset;
@@ -396,6 +394,9 @@ cursor: pointer;
 }
 .sponsers li:last-child {
   margin-top: -0.8rem;
+}
+.coockies-container{
+ margin: auto;
 }
 @media (min-width: 900px) {
   .coockies-container {
@@ -439,3 +440,17 @@ cursor: pointer;
   color: black;
 }
 
+.navbar_img-div{
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-position-x: 30%;
+  width: 100%;
+}
+.carousel-img_show {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-position-x: 50%;
+
+}
