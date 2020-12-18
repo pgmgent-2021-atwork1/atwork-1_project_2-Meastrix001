@@ -52,7 +52,7 @@
   background-color: black;
 }
 .specifick_social-list:hover {
-  background-color:red;
+  background-color: black;
 }
 .specifick_social-list:hover .specifick_social-svg{
   fill: white;
@@ -60,6 +60,7 @@
 .specifick_social-svg {
   fill: black;
   padding: 0.3rem;
+  margin-top: 0.2rem;
   transition: 0.3s;
   width: 2rem;
   height: 2rem;
@@ -67,6 +68,12 @@
 .event_specifick-moreof ul{
   width: 100%;
   margin: auto;
+}
+.event_specifick-moreof ul li{
+  display: none;
+}
+.event_specifick-moreof ul li:nth-child(-n+6){
+  display: block;
 }
 .event_specifick_details-desc p {
   margin-top: 0;

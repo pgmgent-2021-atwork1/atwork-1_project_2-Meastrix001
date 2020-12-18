@@ -240,7 +240,7 @@ box-sizing: border-box;
     transition: 0.2s;
   }
 }
-@media (min-width:800px) {
+@media (min-width:50rem) {
   .event_day {
     width: 10%;
   }

@@ -22,7 +22,7 @@ const GET_CATEGORIE_API = 'https://www.pgm.gent/data/gentsefeesten/categories.js
       this.$imgForward = document.getElementById('img-forward')
       this.$imgReverse = document.getElementById('img-back')
       this.$detailsHeader = document.querySelector('.detailsofday')
-      this.$detailsOfDayMobile = document.querySelector('.detailsofday-mobile')
+      this.$detailsOfDayMobile = document.querySelector('.details_selected-day')
       this.$categoriesLinedUp = document.querySelector('.details_categories-list')
       this.$eventsAndcatsSortedLarge = document.querySelector('.all_events_sorted--large')
       this.$eventsAndcatsSortedSmall = document.querySelector('.all_events_sorted--small')
@@ -36,7 +36,6 @@ const GET_CATEGORIE_API = 'https://www.pgm.gent/data/gentsefeesten/categories.js
       if (this.$navigateDays) {
         this.$navigateDays.innerHTML = this.CreateHTMLForSearchByDay()
       }
-             //------------------PUT BACK ON BEFORE DEADLINE-------------------------------------------------------------------------------------
       if (this.$homePageHeaderEvents) {
         this.$homePageHeaderEvents.innerHTML = this.getDataForEventsFromGFEventAPIEndPoint() 
       }
@@ -49,10 +48,11 @@ const GET_CATEGORIE_API = 'https://www.pgm.gent/data/gentsefeesten/categories.js
       if(this.$imageCarouselprint) {
         this.$imageCarouselprint.innerHTML = this.imageCarousel(); 
       }
-            //------------------PUT BACK ON BEFORE DEADLINE-------------------------------------------------------------------------------------
-
       if (this.$detailsHeader) {
         this.$detailsHeader.innerHTML = this.getDataForDetailsPageFromGFEventAPIEndPoint();
+      }
+      if (this.$detailsOfDayMobile) {
+        this.$detailsOfDayMobile.innerHTML = this.createHTMLforSelectedDay();
       }
       if (this.$categoriesLinedUp) {
         this.$categoriesLinedUp.innerHTML = this.getAllCategoriesFromAPI()
@@ -193,6 +193,20 @@ const GET_CATEGORIE_API = 'https://www.pgm.gent/data/gentsefeesten/categories.js
       } return tempStr.innerHTML
       
     },
+    createHTMLforSelectedDay() {
+      const searchUrlforParam = window.location.search
+      const searchForparam = new URLSearchParams(searchUrlforParam)
+      const getParamFromUrl = searchForparam.get('day')
+       let tempStr = '';
+        navBarSearchByDays.map(days => {
+        if ( getParamFromUrl !== null && getParamFromUrl === days.day) {
+          tempStr += `
+           <h1>${days.dayInStrFull} ${days.day} ${days.month}</h1><p>Wijzig dag</p>
+           ` 
+        } 
+      })
+      return this.$detailsOfDayMobile.innerHTML = tempStr
+    },
     getDataForDetailsPageFromGFEventAPIEndPoint() {
       fetch(GET_EVENT_API, {})
         .then(response => response.json())
@@ -206,30 +220,29 @@ const GET_CATEGORIE_API = 'https://www.pgm.gent/data/gentsefeesten/categories.js
       const searchForParam = new URLSearchParams(searchURL)
       //get specified param
       const getParam = searchForParam.get('day')
+       let tempStr = '';
       console.log(getParam)
       if (getParam !== null) {
-        let tempStr = '';
-      tempStr += `<div class="detail_day"><ul>`
-      navBarSearchByDays.map(days => {
-        if (getParam === days.day) {
-          console.log(getParam)
-          console.log(days.day)
-          console.log('hello')
-          tempStr = `
-           <h1>${days.dayInStrFull} ${days.day} ${days.month}</h1> <p>Wijzig dag</p>
-           `
-        }
-        return this.$detailsOfDayMobile.innerHTML = tempStr
-      });
       data.map((it, index)  => {
         if (it.day === getParam) {
           tempStr += `
-          <li><a href="">${it.title}</a></li>
+         <article class="header_event-block">
+                        <div class="event-img "  loading=lazy style="background: url(${it.image !== null ? it.image.thumb : "static/media/default.jpg"}); background-position: center center; background-size: cover;">
+                        </div>
+                        <div class="event-details easetrans">
+                          <div class="event-time">
+                           <h3>Zo ${it.day} Jul ${it.start} U.</h3>
+                          </div>
+                          <div class="event-items">
+                           <h3>${it.title}</h3>
+                           <h4>${it.location}</h4>
+                          </div>
+                      </div>
+                    </article> 
           `
         }
-        tempStr += `</ul></div>`
+        
       })
-     return this.$detailsHeader.innerHTML = tempStr
     }
     else {
       tempStr += `<div class="testdiv">
@@ -249,9 +262,6 @@ const GET_CATEGORIE_API = 'https://www.pgm.gent/data/gentsefeesten/categories.js
       shortendID = category.replace(/'/g, '').replace(/ /g, '').replace(/'/g, '')
       return  `<li><p><a href="detail.html#${shortendID}">${category}</a></p></li>`
     }).join('')
-    array.forEach(element => {
-      
-    });
     },
     getCategoriesForSorting(){
       console.log('fetching')
@@ -348,8 +358,10 @@ const GET_CATEGORIE_API = 'https://www.pgm.gent/data/gentsefeesten/categories.js
       const getParam = searchForParam.get('slug')
       const getParamOfOrg = searchForParam.get('Cat')
       data.map(check => {
-        if (check.organizer === getParamOfOrg) {
-           let tempString = '';
+        let tempString = '';
+        if (document.querySelector('.event_specifick-moreof-ul').innerHTML.length !== 3) {
+           if (check.organizer === getParamOfOrg) {
+
           tempString += `
           <li>
             <a href="">
@@ -361,13 +373,14 @@ const GET_CATEGORIE_API = 'https://www.pgm.gent/data/gentsefeesten/categories.js
             </a>
             </li>`
           this.$eventSpecifickDetailsMoreOf = document.querySelector('.event_specifick-moreof-ul')
-          return this.$eventSpecifickDetailsMoreOf.innerHTML += tempString
+          console.log(document.querySelector('.event_specifick-moreof-ul').innerHTML.length)
+          
         }
+        }
+       return this.$eventSpecifickDetailsMoreOf.innerHTML += tempString
       });
       data.map(check2 => {
         if (check2.slug === getParam) {
-          console.log(check2.slug)
-          console.log(getParam)
           navBarSearchByDays.map(days => {
             if (days.day === check2.day) { 
                console.log(check2.title)

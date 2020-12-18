@@ -25,7 +25,7 @@
 }
 @media(min-width:40rem) {
   .details_extras-filter-options{
-    margin-left: 7.8rem;
+    margin-left: 10.6rem;
   }
   .details_extras-filter-options li{
     height: fit-content;
@@ -114,6 +114,18 @@ width: fit-content;
   }
 }
 /* ------------------------------------ */
+.vs_hover:hover {
+  background-color: black;
+  transition: 0.3;
+  cursor: pointer;
+}
+.details_selected-day{
+  margin: auto;
+}
+.vs_hover:hover path {
+  fill: white;
+  transition: 0.3;
+}
 .details_filtering {
   position: relative;
   margin: auto;
@@ -255,7 +267,7 @@ word-break: break-word;
   margin-block-start: 0;
 }
 .details_page-event-small p{
-  margin-block-start: 0;
+  margin-block-start: 0; margin-bottom: 0;
 }
 .event_specifick-moreof section,
 .details_event-block-small section{
@@ -309,4 +321,10 @@ width: 35rem;
   .details_page-event-small  h3{
     width: 55rem;
       }
+}
+.detailsofday article{
+  display: none
+}
+.detailsofday article:nth-child(-n+3) {
+  display: block;
 }
