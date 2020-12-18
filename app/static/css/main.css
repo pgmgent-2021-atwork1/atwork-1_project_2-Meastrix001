@@ -8,6 +8,12 @@
   src: url(../fonts/raleway-variablefont_wght-webfont.woff) format('woff'),
   url( ../fonts/raleway-variablefont_wght-webfont.woff2) format('woff2');
 }
+@font-face {
+  font-family: 'raleway-thin';
+  src: url(../fonts/Raleway-Thin.woff) format('woff'),
+  url( ../fonts/Raleway-Thin.woff2) format('woff2');
+  font-weight: 100;
+}
 
 
 /* font-family: Raleway;
@@ -25,7 +31,7 @@ text-align: left; */
 body{
   margin: 0;
 }
-h2, h3 ,li, a, span{
+h2, h3 ,li, a, span, h1{
   font-family: 'Raleway', sans-serif;
   font-weight: 800;
 }
@@ -45,9 +51,16 @@ p , h4{
   padding-left: 2rem;
   padding-right: 2rem;
   max-width: 100rem;
+  box-sizing: border-box;
 }
 ul{
   margin-block-start: 0;
+}
+h1 {
+  font-family: 'raleway';
+}
+input:hover{
+  cursor: pointer;
 }
 /* navbar */
 .nav_list,
@@ -64,8 +77,14 @@ color: white;
   width: 100%;
 }
 .navbar_img-div{
-height: 75vh;
+  height: 25rem;
+  }
+@media(min-width:67.5rem) {
+  .navbar_img-div{
+height: 45rem;
 }
+}
+
 .navbarlist{
   position: absolute;
   color: white;
@@ -214,7 +233,6 @@ width: 20%;
 height: auto;
 text-align: center;
 background-color: black;
-
 padding: 1.4rem;
 box-sizing: border-box;
 }
@@ -223,6 +241,11 @@ box-sizing: border-box;
   margin-bottom: 0;
   transition: 0.2s;
   color: white;
+  font-family: raleway;
+  font-size: 0.9rem;
+}
+.event_day a{
+  text-decoration: none;
 }
 .event_day:hover p {
   color: black;
@@ -236,7 +259,7 @@ box-sizing: border-box;
     }
 @media (min-width:522px) {
   .event_day p{
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     transition: 0.2s;
   }
 }
@@ -333,10 +356,18 @@ cursor: pointer;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  background-position-x: 70%;
+  background-position-x: 60%;
   width: 100%;
-  height: 46vh;
+  height: 28rem;
   position: relative;
+  transition: 0.3s;
+}
+@media(min-width:40rem) {
+  .footer-bottom {
+    background-position-x: 70%;
+    height: 25rem;
+    transition: 0.3s;
+  }
 }
 .footer-block {
   position: relative;
@@ -359,6 +390,7 @@ cursor: pointer;
 }
 .footer-block_content p {
   color: white;
+  width: 100%;
 }
 .footer-bottom-follow {
   display: flex;

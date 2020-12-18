@@ -12,8 +12,10 @@
   margin-bottom: 6rem;
   width: 90%;
   margin: auto;
+  padding: 0;
   padding-top: 3rem;
   padding-bottom: 6rem;
+  box-sizing: border-box;
 }
 .header_event-block{
   position: relative;
@@ -70,7 +72,7 @@
   margin-inline-end: 0;
   margin-inline-start: 0;
 }
-@media (min-width: 798px) {
+@media (min-width: 49.8rem) {
   .header_events
   {
     display: flex;
@@ -84,7 +86,7 @@
     height: 25rem;
   }
 }
-@media (min-width: 1500px) {
+@media (min-width: 93.75rem) {
   .header_event-block{
     width: 31rem;
     transition: 0.3s;
@@ -101,15 +103,17 @@
 .news{
   margin: auto;
   width: fit-content;
-  width: 90%; 
+  width: 100%; 
   margin-bottom: 1.4rem;
   cursor: pointer;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column-reverse;
 }
-.news-article{
+.news article{
   width: 100%;
   max-width: 50rem;
   margin-bottom: 2rem;
-
 }
 .news-img {
   position: relative;
@@ -128,12 +132,12 @@
 }
 .news-article_content{
   width: fit-content;
-  margin: auto;
   margin-bottom: 3rem;  
 }
 .news-article_content p{
     padding: 0.2rem 2rem;
       border: 2px solid black;
+      transition: 0.3s;
 }
 .news-article_content p:hover
 {
@@ -148,14 +152,14 @@
    color: black;
   text-decoration: none;
 }
-@media (min-width:400px) {
+@media (min-width:25rem) {
   .news-date {
   transform: translateY(50%) rotate(-90deg);
   bottom: 50%;
   left: -2rem;
   }
 }
-@media (min-width:900px){
+@media (min-width:56.25rem){
   .news-article{
     display: flex;
     width: 100%;
@@ -170,8 +174,12 @@
   .news-wrap{
     width: 50%;
   }
+  .news-article_content p{
+    padding: 1.2rem 3rem;
+    transition: 0.3s;
+  }
 }
-@media (min-width: 1500px) {
+@media (min-width: 93.75) {
 .news-img  {
   height: 25rem;
   transition: 0.2s;
@@ -219,7 +227,7 @@
   background-color: none;
   cursor: pointer;
 }
-@media (min-width:900px) {
+@media (min-width:56.25rem) {
   .carousel{
     height: 100%;
     max-height: 35rem;
@@ -228,7 +236,7 @@
     height: 35rem;
   }
 }
-@media (min-width: 1900px) {
+@media (min-width: 118.75rem) {
   .carousel{
     height: 100%;
     max-height: 50rem;
@@ -280,7 +288,7 @@
   width: 100%;
   max-width: 30rem;
 }
-@media (min-width:1000px) {
+@media (min-width:62.5rem) {
   .twitter-carousel {
     display: flex;
     justify-content: space-between;
@@ -289,7 +297,6 @@
     padding-top: 4rem;
     padding-bottom: 3rem;
     transition: 0.2s;
-    box-sizing: border-box;
   }
   .twitter-carousel_banner {
     width: 49%;
@@ -335,13 +342,13 @@ color: white;
   cursor: pointer;
   color: black;
 }
-@media (min-width: 522px) {
+@media (min-width: 32.6rem) {
 
   .staynotified-inputs {
     flex-direction: row;
   }
 }
-@media (min-width: 920px) {
+@media (min-width: 57.5) {
   .staynotified-inputs {
     height: 4rem;
   }

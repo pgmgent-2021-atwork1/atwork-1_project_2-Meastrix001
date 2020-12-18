@@ -69,51 +69,61 @@ newsArticles = [{
 navBarSearchByDays = [{
   day: '19',
   month: 'Jul',
+  monthFull: 'Juli',
   dayInStr: 'Ma',
   dayInStrFull: 'Maandag'
 }, {
   day: '20',
   month: 'jul',
+  monthFull: 'Juli',
   dayInStr: 'Di',
   dayInStrFull: 'Dinsdag'
 }, {
   day: '21',
   month: 'jul',
+  monthFull: 'Juli',
   dayInStr: 'Wo',
   dayInStrFull: 'Woensdag'
 }, {
   day: '22',
   month: 'jul',
+  monthFull: 'Juli',
   dayInStr: 'Do',
   dayInStrFull: 'Donderdag'
 }, {
   day: '23',
   month: 'jul',
+  monthFull: 'Juli',
   dayInStr: 'Vr',
   dayInStrFull: 'vrijdag'
 }, {
   day: '24',
   month: 'jul',
+  monthFull: 'Juli',
   dayInStr: 'Za',
   dayInStrFull: 'Zaterdag'
 }, {
   day: '25',
   month: 'jul',
+  monthFull: 'Juli',
   dayInStr: 'Zo',
   dayInStrFull: 'Zondag'
 }, {
   day: '26',
   month: 'jul',
+  monthFull: 'Juli',
   dayInStr: 'Ma',
   dayInStrFull: 'Maandag'
 }, {
   day: '27',
   month: 'jul',
+  monthFull: 'Juli',
   dayInStr: 'Di',
   dayInStrFull: 'Dinsdag'
 }, {
   day: '28',
   month: 'jul',
+  monthFull: 'Juli',
   dayInStr: 'Wo',
   dayInStrFull: 'woensdag'
 }]

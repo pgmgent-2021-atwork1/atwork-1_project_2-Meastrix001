@@ -24,12 +24,12 @@ const GET_CATEGORIE_API = 'https://www.pgm.gent/data/gentsefeesten/categories.js
       this.$detailsHeader = document.querySelector('.detailsofday')
       this.$detailsOfDayMobile = document.querySelector('.details_selected-day')
       this.$categoriesLinedUp = document.querySelector('.details_categories-list')
-      this.$eventsAndcatsSortedLarge = document.querySelector('.all_events_sorted--large')
-      this.$eventsAndcatsSortedSmall = document.querySelector('.all_events_sorted--small')
+      this.$eventsAndcatsSortedLarge = document.querySelector('.events_sorted')
       this.$detailsPageInGridButton = document.querySelector('.details_extra-viewstyle-grid')
       this.$detailsPageInListButton = document.querySelector('.details_extra-viewstyle-list')
       this.$eventSpecifickDetails = document.querySelector('.event_specifick-details')
       this.$eventSpecifickDetailsMoreOf = document.querySelector('.event_specifick-moreof-ul')
+      this.$detailsEventBlock = document.querySelector('.details_event-block')
     },
     buildUI() {
       console.log('UI Built?');
@@ -99,29 +99,23 @@ const GET_CATEGORIE_API = 'https://www.pgm.gent/data/gentsefeesten/categories.js
       if (this.$detailsPageInGridButton) {
         this.$detailsPageInGridButton.addEventListener('click', (evt) => {
           if (this.$eventsAndcatsSortedLarge.classList.contains('open')) {
-               this.$eventsAndcatsSortedSmall.classList.remove('open')
+                  this.$eventsAndcatsSortedLarge.classList.add('open')
           } else {
             this.$eventsAndcatsSortedLarge.classList.add('open')
-            this.$eventsAndcatsSortedSmall.classList.remove('open')
           }
         })
       }
       if (this.$detailsPageInListButton) {
         this.$detailsPageInListButton.addEventListener('click', (evt) => {
-          if (this.$eventsAndcatsSortedSmall.classList.contains('open')) {
-               this.$eventsAndcatsSortedLarge.classList.remove('open')
-          } else {
-            this.$eventsAndcatsSortedSmall.classList.add('open')
-            this.$eventsAndcatsSortedLarge.classList.remove('open')
+          if (this.$eventsAndcatsSortedLarge.classList.contains('open')) {
+              this.$eventsAndcatsSortedLarge.classList.remove('open')
           }
         })
       }
-
     },
     createHTMLforNewsArticles() {
       let tempStr = ''
       newsArticles.map((article, index) => {
-        
         console.log(article.backgroundImage)
              tempStr += `
          <article class="news-article">
@@ -132,13 +126,13 @@ const GET_CATEGORIE_API = 'https://www.pgm.gent/data/gentsefeesten/categories.js
          </div>
          <div class="news-wrap">
            <h2>${article.title}</h2>
-           <p>${article.description}</p>
+           <p>${article.description !== undefined ? article.description : "geen beschrijving gevonden"}</p>
            <img class="news-arrow" src="${article.arrow}">
          </div>
        </article>
          ` 
       })   
-      return tempStr
+      return this.$newsArticles.innerHTML += tempStr
     },
     getDataForEventsFromGFEventAPIEndPoint() {
       //using promises
@@ -201,11 +195,11 @@ const GET_CATEGORIE_API = 'https://www.pgm.gent/data/gentsefeesten/categories.js
         navBarSearchByDays.map(days => {
         if ( getParamFromUrl !== null && getParamFromUrl === days.day) {
           tempStr += `
-           <h1>${days.dayInStrFull} ${days.day} ${days.month}</h1><p>Wijzig dag</p>
+           <p>Geselecteerde dag</p><h1>${days.dayInStrFull} ${days.day} ${days.monthFull}</h1>
            ` 
         } 
       })
-      return this.$detailsOfDayMobile.innerHTML = tempStr
+      return this.$detailsOfDayMobile.innerHTML += tempStr
     },
     getDataForDetailsPageFromGFEventAPIEndPoint() {
       fetch(GET_EVENT_API, {})
@@ -260,7 +254,7 @@ const GET_CATEGORIE_API = 'https://www.pgm.gent/data/gentsefeesten/categories.js
     getCategories(cats) {
       this.$categoriesLinedUp.innerHTML = cats.map((category, index) =>{
       shortendID = category.replace(/'/g, '').replace(/ /g, '').replace(/'/g, '')
-      return  `<li><p><a href="detail.html#${shortendID}">${category}</a></p></li>`
+      return  `<li><p><a href="#${shortendID}">${category}</a></p></li>`
     }).join('')
     },
     getCategoriesForSorting(){
@@ -281,7 +275,7 @@ const GET_CATEGORIE_API = 'https://www.pgm.gent/data/gentsefeesten/categories.js
         .then(json => {
           this.getEvents = json;
       this.sortEventsAndCategorieslarge();
-      this.sortEventsAndCategoriesSmall()
+      // this.sortEventsAndCategoriesSmall()
         })
         .catch(error => console.log(error));
     },
@@ -307,44 +301,14 @@ const GET_CATEGORIE_API = 'https://www.pgm.gent/data/gentsefeesten/categories.js
             // let tempStr = '';
           }).join('');
           let shortendID = evtCat.replace(/'/g, '').replace(/ /g, '').replace(/'/g, '')
-          return `<section id="${shortendID}" class="details_event-block-large">
-          <h2>${evtCat}</h2>
+          return `<section id="${shortendID}" class="details_event-block">
+          <h2 id="${evtCat}">${evtCat}</h2>
           <ul>
           ${filterdEvents}
           </ul>
           </section> `
         }).join('')
         return this.$eventsAndcatsSortedLarge.innerHTML = mapEvents
-    },
-    sortEventsAndCategoriesSmall() {
-                // this.getEvents
-        // this.fetchCategories
-        let mapEvents = this.fetchCategories.map((evtCat) => {
-          const filterTroughEvents = this.getEvents.filter((filterEvt) => {
-            return filterEvt.category.indexOf(evtCat) > -1;
-          });
-          let filterdEvents = filterTroughEvents.map((mapEvt) =>{
-            return `
-            <li>
-            <a href="dag.html?slug=${mapEvt.slug}&Cat=${mapEvt.organizer}">
-            <article class="details_page-event-small">
-            <p>${mapEvt.start}</p>
-            <h3>${mapEvt.title}</h3>
-            <h4>${mapEvt.organizer}</h4>
-             </article>
-            </a>
-            </li>`
-            // let tempStr = '';
-          }).join('');
-          let shortendID = evtCat.replace(/'/g, '').replace(/ /g, '').replace(/'/g, '')
-          return `<section id="${shortendID}" class="details_event-block-small">
-          <h2>${evtCat}</h2>
-          <ul>
-          ${filterdEvents}
-          </ul>
-          </section> `
-        }).join('')
-        return this.$eventsAndcatsSortedSmall.innerHTML = mapEvents
     },
     getAPIForDaySpecifickDetails() {
         fetch(GET_EVENT_API, {})
@@ -364,8 +328,8 @@ const GET_CATEGORIE_API = 'https://www.pgm.gent/data/gentsefeesten/categories.js
 
           tempString += `
           <li>
-            <a href="">
-            <article class="details_page-event-small">
+            <a href="dag.html?slug=${check.slug}&Cat=${check.organizer}">
+            <article class="events_sorted moreof_organizer">
             <p>${check.start}</p>
             <h3>${check.title}</h3>
             <h4>${check.organizer}</h4>
