@@ -160,14 +160,14 @@
   }
 }
 @media (min-width:56.25rem){
-  .news-article{
+  .news article{
     display: flex;
     width: 100%;
-    max-width: unset;
+    max-width: 100rem;
   }
   .news-img{
     width: 50%;
-    height: 15rem;
+    height: 22rem;
     margin-right: 2rem;
       transition: 0.2s;
   }
@@ -223,7 +223,7 @@
   cursor: pointer;
 }
 #img-back{
-  margin-right: 1.9rem;
+  margin-right: 1rem;
   background-color: none;
   cursor: pointer;
 }

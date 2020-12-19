@@ -78,8 +78,7 @@ width: fit-content;
   list-style: none;
   padding-inline-start: 1rem;
   background-color: black;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding: 2rem;
   width: 100%;
   transition: 0.3s;
 }
@@ -99,7 +98,7 @@ width: fit-content;
 
 @media (min-width:50rem) {
   .details_categories-list li a{
-    font-size: 1.2rem;
+    font-size: 1.7rem;
   }
 }
 @media(min-width:80rem) {
@@ -271,7 +270,7 @@ width: 35rem;
 }
 @media(min-width:100rem) {
   .events_sorted  h3{
-    width: 52rem;
+    width: 46rem;
       }
 }
 /* large */

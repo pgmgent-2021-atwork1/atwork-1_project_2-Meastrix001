@@ -1,15 +1,22 @@
 body{
   margin: 0;
 }
-h2, h3 ,li, a, span, h1{
+h1, h2, h3 , h4 {
   font-family: 'Raleway', sans-serif;
-  font-weight: 800;
+  font-weight: 900;
+}
+span{
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
 }
 a {
+  font-weight: 'Raleway', sans-serif;
+  font-weight: 600;
   color: black;
 }
-p , h4{
+p{
   font-family: 'Raleway';
+  font-weight: 500;
   font-size: 15px;
   line-height: 1.6rem;
 }
@@ -24,9 +31,6 @@ p , h4{
 }
 ul{
   margin-block-start: 0;
-}
-h1 {
-  font-family: 'Raleway';
 }
 input:hover{
   cursor: pointer;

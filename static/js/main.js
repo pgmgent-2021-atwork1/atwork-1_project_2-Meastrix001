@@ -168,7 +168,6 @@ const GET_CATEGORIE_API = 'https://www.pgm.gent/data/gentsefeesten/categories.js
       let number;
       lengthAmountImg = headerImages
       number = Math.floor(Math.random() * (max - min) + 1)
-      console.log(`Main menu image number`)
       let imgprint = this.$navbarimage.innerHTML;
       imgprint += `<div class="navbar_img-div" style="background-image: url(${lengthAmountImg[number]});"></div>`
       return imgprint
@@ -286,6 +285,9 @@ const GET_CATEGORIE_API = 'https://www.pgm.gent/data/gentsefeesten/categories.js
           const filterTroughEvents = this.getEvents.filter((filterEvt) => {
             return filterEvt.category.indexOf(evtCat) > -1;
           });
+          filterTroughEvents.sort((sortKey1, sortKey2) => {
+            return sortKey1.sort_key.localeCompare(sortKey2.sort_key)
+          })
           let filterdEvents = filterTroughEvents.map((mapEvt) =>{
             return `
             <li><a href="dag.html?slug=${mapEvt.slug}&Cat=${mapEvt.organizer}">
@@ -323,9 +325,8 @@ const GET_CATEGORIE_API = 'https://www.pgm.gent/data/gentsefeesten/categories.js
       const getParamOfOrg = searchForParam.get('Cat')
       data.map(check => {
         let tempString = '';
-        if (document.querySelector('.event_specifick-moreof-ul').innerHTML.length !== 3) {
            if (check.organizer === getParamOfOrg) {
-
+             
           tempString += `
           <li>
             <a href="dag.html?slug=${check.slug}&Cat=${check.organizer}">
@@ -336,10 +337,7 @@ const GET_CATEGORIE_API = 'https://www.pgm.gent/data/gentsefeesten/categories.js
              </article>
             </a>
             </li>`
-          this.$eventSpecifickDetailsMoreOf = document.querySelector('.event_specifick-moreof-ul')
-          console.log(document.querySelector('.event_specifick-moreof-ul').innerHTML.length)
-          
-        }
+          this.$eventSpecifickDetailsMoreOf = document.querySelector('.event_specifick-moreof-ul')   
         }
        return this.$eventSpecifickDetailsMoreOf.innerHTML += tempString
       });
@@ -347,7 +345,6 @@ const GET_CATEGORIE_API = 'https://www.pgm.gent/data/gentsefeesten/categories.js
         if (check2.slug === getParam) {
           navBarSearchByDays.map(days => {
             if (days.day === check2.day) { 
-               console.log(check2.title)
             let tempStr = '';
           tempStr = `
           <div class="event_specifick_details">
@@ -365,7 +362,7 @@ const GET_CATEGORIE_API = 'https://www.pgm.gent/data/gentsefeesten/categories.js
                <p>${check2.description !== undefined ? check2.description : "Dit Evenement heeft geen beschrijving "}</p>
                <div>
                <p>Website</p>
-               <p><a>${check2.url !== null ? check2.url : "Dit Evenement heeft geen website"}</a></p>
+               <p><a href="">${check2.url !== null ? check2.url : "Dit Evenement heeft geen website"}</a></p>
                </div>
                <div>
                <p>Organisator</p>
