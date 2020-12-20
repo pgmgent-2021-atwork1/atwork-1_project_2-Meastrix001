@@ -11,33 +11,37 @@ const GET_CATEGORIE_API = 'https://www.pgm.gent/data/gentsefeesten/categories.js
       this.ClickEventListener();
     },
     cacheElements() {
-      this.$navbarmenu = document.querySelector('.navbarmenubutton')
-      this.$navbar = document.querySelector('.navbarlist')
-      this.$navigateDays = document.querySelector('.header_daysmenu')
-      this.$homePageHeaderEvents = document.querySelector('.header_events')
-      this.$navbarimage = document.querySelector('.fullnavbar')
-      this.$newsArticles = document.querySelector('.news')
-      this.$imageCarouselprint = document.querySelector('.carousel-images')
-      this.$navbarexit = document.querySelector('.menu_exit-svg')
-      this.$imgForward = document.getElementById('img-forward')
-      this.$imgReverse = document.getElementById('img-back')
-      this.$detailsHeader = document.querySelector('.detailsofday')
-      this.$detailsOfDayMobile = document.querySelector('.details_selected-day')
-      this.$categoriesLinedUp = document.querySelector('.details_categories-list')
-      this.$eventsAndcatsSortedLarge = document.querySelector('.events_sorted')
-      this.$detailsPageInGridButton = document.querySelector('.details_extra-viewstyle-grid')
-      this.$detailsPageInListButton = document.querySelector('.details_extra-viewstyle-list')
-      this.$eventSpecifickDetails = document.querySelector('.event_specifick-details')
-      this.$eventSpecifickDetailsMoreOf = document.querySelector('.event_specifick-moreof-ul')
-      this.$detailsEventBlock = document.querySelector('.details_event-block')
+      this.$navbarmenu = document.querySelector('.navbarmenubutton');
+      this.$navbar = document.querySelector('.navbarlist');
+      this.$navigateDays = document.querySelector('.header_daysmenu');
+      this.$homePageHeaderEvents = document.querySelector('.header_events');
+      this.$navbarimage = document.querySelector('.fullnavbar');
+      this.$newsArticles = document.querySelector('.news');
+      this.$imageCarouselprint = document.querySelector('.carousel-images');
+      this.$navbarexit = document.querySelector('.menu_exit-svg');
+      this.$imgForward = document.getElementById('img-forward');
+      this.$imgReverse = document.getElementById('img-back');
+      this.$detailsHeader = document.querySelector('.detailsofday');
+      this.$detailsOfDayMobile = document.querySelector('.details_selected-day');
+      this.$categoriesLinedUp = document.querySelector('.details_categories-list');
+      this.$eventsAndcatsSortedLarge = document.querySelector('.events_sorted');
+      this.$detailsPageInGridButton = document.querySelector('.details_extra-viewstyle-grid');
+      this.$detailsPageInListButton = document.querySelector('.details_extra-viewstyle-list');
+      this.$eventSpecifickDetails = document.querySelector('.event_specifick-details');
+      this.$eventSpecifickDetailsMoreOf = document.querySelector('.event_specifick-moreof-ul');
+      this.$detailsEventBlock = document.querySelector('.details_event-block');
+      this.$moreOfList = document.querySelector('.moreof-trigger');
+      this.$mobileToggle = document.querySelector('.mobile_days-list-toggle');
+      this.$mobileDaysList = document.querySelector('.navBarExtendButton');
+      this.$MobileDaysListed = document.querySelector('.mobile_days-list')
     },
     buildUI() {
       console.log('UI Built?');
       if (this.$navigateDays) {
-        this.$navigateDays.innerHTML = this.CreateHTMLForSearchByDay()
+        this.$navigateDays.innerHTML = this.CreateHTMLForSearchByDay();
       }
       if (this.$homePageHeaderEvents) {
-        this.$homePageHeaderEvents.innerHTML = this.getDataForEventsFromGFEventAPIEndPoint() 
+        this.$homePageHeaderEvents.innerHTML = this.getDataForEventsFromGFEventAPIEndPoint(); 
       }
       if (this.$navbarimage) {
         this.$navbarimage.innerHTML = this.randomImageprint();
@@ -55,16 +59,19 @@ const GET_CATEGORIE_API = 'https://www.pgm.gent/data/gentsefeesten/categories.js
         this.$detailsOfDayMobile.innerHTML = this.createHTMLforSelectedDay();
       }
       if (this.$categoriesLinedUp) {
-        this.$categoriesLinedUp.innerHTML = this.getAllCategoriesFromAPI()
+        this.$categoriesLinedUp.innerHTML = this.getAllCategoriesFromAPI();
       }
       if (this.$eventsAndcatsSortedLarge) {
-        this.$eventsAndcatsSortedLarge.innerHTML = this.getCategoriesForSorting()
+        this.$eventsAndcatsSortedLarge.innerHTML = this.getCategoriesForSorting();
       }
       if (this.$eventsAndcatsSortedSmall) {
-        this.$eventsAndcatsSortedSmall.innerHTML = this.getCategoriesForSorting()
+        this.$eventsAndcatsSortedSmall.innerHTML = this.getCategoriesForSorting();
       }
       if (this.$eventSpecifickDetails) {
-        this.$eventSpecifickDetails.innerHTML = this.getAPIForDaySpecifickDetails()
+        this.$eventSpecifickDetails.innerHTML = this.getAPIForDaySpecifickDetails();
+      }
+      if (this.$MobileDaysListed) {
+        this.$MobileDaysListed.innerHTML = this.CreateDaysListForMobile();
       }
     },
     CreateHTMLForSearchByDay() {
@@ -76,8 +83,8 @@ const GET_CATEGORIE_API = 'https://www.pgm.gent/data/gentsefeesten/categories.js
         <p>${dayOfEvents.day}${dayOfEvents.month}</p>
         </a>
         </div>
-        `
-      })
+        `;
+      });
       return tempStr;
     },
     ClickEventListener() {
@@ -86,12 +93,10 @@ const GET_CATEGORIE_API = 'https://www.pgm.gent/data/gentsefeesten/categories.js
         if (toggle.classList.contains('open')) {
           toggle.classList.remove('open')
         } else {
-          toggle.classList.add('open')
-        };
-
-      })
+          toggle.classList.add('open');
+        }
+      });
       this.$navbarexit.addEventListener('click', (evt) => {
-        let exit = this.$navbarexit
         if (this.$navbar.classList.contains('open')) {
           this.$navbar.classList.remove('open')
         }
@@ -99,7 +104,7 @@ const GET_CATEGORIE_API = 'https://www.pgm.gent/data/gentsefeesten/categories.js
       if (this.$detailsPageInGridButton) {
         this.$detailsPageInGridButton.addEventListener('click', (evt) => {
           if (this.$eventsAndcatsSortedLarge.classList.contains('open')) {
-                  this.$eventsAndcatsSortedLarge.classList.add('open')
+                  this.$eventsAndcatsSortedLarge.classList.re('open')
           } else {
             this.$eventsAndcatsSortedLarge.classList.add('open')
           }
@@ -112,6 +117,17 @@ const GET_CATEGORIE_API = 'https://www.pgm.gent/data/gentsefeesten/categories.js
           }
         })
       }
+      if (this.$moreOfList) {
+                this.$moreOfList.addEventListener('click', (evt) => {
+          if (this.$eventSpecifickDetailsMoreOf.classList.contains('open')) {
+            this.$eventSpecifickDetailsMoreOf.classList.remove('open');
+          } else {
+            this.$eventSpecifickDetailsMoreOf.classList.add('open');
+          };
+        })
+      }
+
+      
     },
     createHTMLforNewsArticles() {
       let tempStr = ''
@@ -274,7 +290,6 @@ const GET_CATEGORIE_API = 'https://www.pgm.gent/data/gentsefeesten/categories.js
         .then(json => {
           this.getEvents = json;
       this.sortEventsAndCategorieslarge();
-      // this.sortEventsAndCategoriesSmall()
         })
         .catch(error => console.log(error));
     },
@@ -380,6 +395,28 @@ const GET_CATEGORIE_API = 'https://www.pgm.gent/data/gentsefeesten/categories.js
           })
         }
       })
+    },
+    CreateDaysListForMobile() {
+      this.$mobileDaysList.addEventListener('click', (evt) => {
+        if (this.$mobileToggle.classList.contains('open')) {
+          this.$mobileToggle.classList.remove('open');
+        } else {
+          this.$mobileToggle.classList.add('open');
+        }
+      })
+      
+      let tempStr = this.$MobileDaysListed.innerHTML
+      navBarSearchByDays.map(D => {
+        tempStr += `<li><a href="detail.HTML?day=${D.day}">${D.dayInStrFull} ${D.day} ${D.monthFull}<svg class="menu_arrow menu_arrow-mobile" rotate="45" viewBox="0 0 16 15"
+        fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M7.31667 14.6667L9.21467 12.7814L5.09733 8.66408L16 8.66408V6.00275L5.09733 6.00275L9.21467 1.88542L7.31667 8.2016e-05L0 7.33342L7.31667 14.6667Z"
+          fill="white" />
+      </svg></a></li>`
+      })
+      console.log(tempStr)
+      return tempStr;
+      
     }
     
     /*

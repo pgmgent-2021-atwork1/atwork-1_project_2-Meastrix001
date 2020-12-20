@@ -45,7 +45,29 @@ text-decoration: none;
 color: white;
 /* cursor: pointer;   */
 }
+.menu_arrow .menu_arrow-mobile {
+  display: none;
 
+}
+.mobile_days-list-toggle{
+  display: none;
+}
+
+.mobile_days-list-toggle.open{
+  display: block;
+}
+.mobile_days-list a{
+  display: flex;
+}
+.mobile_days-list li:hover .menu_arrow-mobile{
+  display: block;
+    transform: rotate(-90deg);
+  height: 1rem; 
+  width: 1rem;
+}
+.mobile_days-list li:hover a{
+  text-decoration: white underline;
+}
 .fullnavbar{
   width: 100%;
 }
@@ -189,6 +211,10 @@ margin-left: 1rem;
   .navbar_search-button:hover button {
     background-color: white;
     transition: 0.3s;
+  }
+  .mobile_days-list-toggle,
+  .mobile_days-list-toggle.open {
+    display: none;
   }
 }
 
