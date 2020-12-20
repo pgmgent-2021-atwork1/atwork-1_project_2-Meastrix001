@@ -1,6 +1,7 @@
 // const GET_EVENT_API = 'https://www.pgm.gent/data/gentsefeesten/events.json';
 const GET_EVENT_API = 'https://www.pgm.gent/data/gentsefeesten/events_500.json';
 const GET_CATEGORIE_API = 'https://www.pgm.gent/data/gentsefeesten/categories.json';
+const GET_NEWS_API = 'https://www.pgm.gent/data/gentsefeesten/news.json';
 
 
 (() => {
@@ -16,7 +17,7 @@ const GET_CATEGORIE_API = 'https://www.pgm.gent/data/gentsefeesten/categories.js
       this.$navigateDays = document.querySelector('.header_daysmenu');
       this.$homePageHeaderEvents = document.querySelector('.header_events');
       this.$navbarimage = document.querySelector('.fullnavbar');
-      this.$newsArticles = document.querySelector('.news');
+      this.$newsArticles = document.querySelector('.news-articles');
       this.$imageCarouselprint = document.querySelector('.carousel-images');
       this.$navbarexit = document.querySelector('.menu_exit-svg');
       this.$imgForward = document.getElementById('img-forward');
@@ -47,7 +48,7 @@ const GET_CATEGORIE_API = 'https://www.pgm.gent/data/gentsefeesten/categories.js
         this.$navbarimage.innerHTML = this.randomImageprint();
       }
       if (this.$newsArticles) {
-        this.$newsArticles.innerHTML = this.createHTMLforNewsArticles();
+        this.$newsArticles.innerHTML = this.getNewsAPI();
       }
       if(this.$imageCarouselprint) {
         this.$imageCarouselprint.innerHTML = this.imageCarousel(); 
@@ -129,26 +130,49 @@ const GET_CATEGORIE_API = 'https://www.pgm.gent/data/gentsefeesten/categories.js
 
       
     },
-    createHTMLforNewsArticles() {
+    getNewsAPI() {
+      fetch(GET_NEWS_API, {})
+       .then(response => response.json())
+       .then(json => this.createHTMLforNewsArticles(json))
+       .catch(error => console.log(error))
+    },
+    createHTMLforNewsArticles(data) {
       let tempStr = ''
-      newsArticles.map((article, index) => {
-        console.log(article.backgroundImage)
+      data.slice(0, 3).map((article, index) => {
+        let date = new Date(article.publishedAt)
+        let month =  date.getUTCMonth() + 1;
+        let day = date.getUTCDate()
+        let hour = date.getHours()
+        let dayInStr = date.getDay()
+        switch (dayInStr) {
+          case 0: Eventday = "Zo"; break;      
+          case 1: Eventday = "Ma"; break;
+          case 2: Eventday = "Di"; break;
+          case 3: Eventday = "Wo"; break;
+          case 4: Eventday = "Do"; break;
+          case 5: Eventday = "Vr"; break;
+          case 6: Eventday = "Za"; break; 
+        }   
+        console.log(date.getUTCHours)
              tempStr += `
          <article class="news-article">
-         <div class="news-img" style="background: url(${article.backgroundImage}); background-position: center center; background-size: cover; ">
+
+         <div class="news-img" style="background: url(${article.picture.large}); background-position: center center; background-size: cover; ">
            <div class="news-date">
-             <p>${article.date}</p>
+             <p>${day} / 0${month} </p>
            </div>
          </div>
+
          <div class="news-wrap">
            <h2>${article.title}</h2>
-           <p>${article.description !== undefined ? article.description : "geen beschrijving gevonden"}</p>
-           <img class="news-arrow" src="${article.arrow}">
+           <p>${article.synopsis}</p>
+           <img class="news-arrow" src="static/media/menu-arrow_black.svg">
          </div>
+
        </article>
          ` 
-      })   
-      return this.$newsArticles.innerHTML += tempStr
+      })
+      return this.$newsArticles.innerHTML = tempStr
     },
     getDataForEventsFromGFEventAPIEndPoint() {
       //using promises
@@ -414,7 +438,6 @@ const GET_CATEGORIE_API = 'https://www.pgm.gent/data/gentsefeesten/categories.js
           fill="white" />
       </svg></a></li>`
       })
-      console.log(tempStr)
       return tempStr;
       
     }
