@@ -79,7 +79,7 @@ const GET_NEWS_API = 'https://www.pgm.gent/data/gentsefeesten/news.json';
       let tempStr = this.$navigateDays.innerHTML;
       navBarSearchByDays.map(dayOfEvents => { 
         tempStr += `
-        <div class="event_day"><a href="detail.HTML?day=${dayOfEvents.day}">
+        <div class="event_day"><a href="detail.html?day=${dayOfEvents.day}">
         <p>${dayOfEvents.dayInStr}</p>
         <p>${dayOfEvents.day}${dayOfEvents.month}</p>
         </a>
@@ -431,7 +431,7 @@ const GET_NEWS_API = 'https://www.pgm.gent/data/gentsefeesten/news.json';
       
       let tempStr = this.$MobileDaysListed.innerHTML
       navBarSearchByDays.map(D => {
-        tempStr += `<li><a href="detail.HTML?day=${D.day}">${D.dayInStrFull} ${D.day} ${D.monthFull}<svg class="menu_arrow menu_arrow-mobile" rotate="45" viewBox="0 0 16 15"
+        tempStr += `<li><a href="detail.html?day=${D.day}">${D.dayInStrFull} ${D.day} ${D.monthFull}<svg class="menu_arrow menu_arrow-mobile" rotate="45" viewBox="0 0 16 15"
         fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M7.31667 14.6667L9.21467 12.7814L5.09733 8.66408L16 8.66408V6.00275L5.09733 6.00275L9.21467 1.88542L7.31667 8.2016e-05L0 7.33342L7.31667 14.6667Z"
